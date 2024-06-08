@@ -2,17 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs-stable, pkgs-unstable, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   # Nix configuration
   nix = {
@@ -51,7 +47,7 @@
 
   # Set zsh as default shell
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs-stable.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -117,7 +113,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs-stable; [
+  environment.systemPackages = with pkgs; [
     git
     unzip
     vim
@@ -126,7 +122,7 @@
   ];
 
   # Fonts
-  fonts.packages = with pkgs-stable; [
+  fonts.packages = with pkgs; [
     iosevka
     liberation_ttf
     noto-fonts

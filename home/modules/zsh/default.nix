@@ -1,5 +1,5 @@
 # Zsh config
-{ config, lib, pkgs-stable, pkgs-unstable, ... }:
+{ config, lib, pkgs, ... }:
 {
   programs.zoxide.enableZshIntegration = true;
 
@@ -36,7 +36,7 @@
       {
         name = "zsh-nix-shell";
         file = "nix-shell.plugin.zsh";
-        src = pkgs-stable.fetchFromGitHub {
+        src = pkgs.fetchFromGitHub {
           owner = "chisui";
           repo = "zsh-nix-shell";
           rev = "v0.8.0";
@@ -50,7 +50,7 @@
       }
       {
         name = "zsh-powerlevel10k";
-        src = "${pkgs-stable.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
         file = "powerlevel10k.zsh-theme";
       }
     ];

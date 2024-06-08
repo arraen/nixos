@@ -16,30 +16,33 @@
     owner = "arraen";
     workLaptop = "roadray";
     winWSL = "winray";
-      
-    pkgs-stable = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      nixpkgs.config.allowUnfreePredicate = _: true;
+    overlay-unstable = final: prev: {
+      unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
     };
-    
-    pkgs-unstable = import nixpkgs-unstable {
+    pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
-      config.allowUnfreePredicate = _: true;
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        overlay-unstable
+      ];
     }; 
   in {
     nixosConfigurations = {
       ${workLaptop} = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit pkgs-stable pkgs-unstable; 
+          inherit pkgs; 
         };
         modules = [
           ./systems/${workLaptop}/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = { inherit pkgs-stable pkgs-unstable; };
+            home-manager.extraSpecialArgs = { inherit pkgs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${owner} = import ./home/${workLaptop}/home.nix;
@@ -50,7 +53,7 @@
 
     homeConfigurations.${owner} = home-manager.lib.homeManagerConfiguration {
       inherit system;
-      SpecialArgs = { inherit pkgs-stable pkgs-unstable; };
+      SpecialArgs = { inherit pkgs; };
       modules = [
         ./home/${winWSL}/home.nix
       ];

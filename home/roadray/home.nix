@@ -1,17 +1,7 @@
 # Home manager configuration
-{ inputs, config, lib, pkgs-stable, pkgs-unstable, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   hm = inputs.home-manager.lib.hm;
-  stable-apps = with pkgs-stable; [
-    # Stable packages
-    neovim
-    htop
-    spotify
-    google-chrome
-  ];
-  unstable-apps =  with pkgs-unstable; [
-    devbox
-  ];
 in
 {
   # Import home-manager modules
@@ -20,7 +10,13 @@ in
   ];
 
   # User packages
-  home.packages = stable-apps ++ unstable-apps;
+  home.packages = with pkgs; [
+    neovim
+    htop
+    unstable.spotify
+    google-chrome
+    unstable.devbox
+  ];
 
   # Git
   programs.git = {

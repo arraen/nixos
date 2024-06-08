@@ -1,11 +1,11 @@
-{ inputs, pkgs-stable, pkgs-unstable, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.file = {
     # Put the pre-generated nix-index database in place,
     # used for command-not-found.
     ".cache/nix-index/files".source =
-      inputs.nix-index-database.legacyPackages.${pkgs-stable.system}.database;
+      inputs.nix-index-database.legacyPackages.${pkgs.system}.database;
   };
 
   programs =
