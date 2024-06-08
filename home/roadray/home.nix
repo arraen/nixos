@@ -11,9 +11,9 @@ in
 
   # User packages
   home.packages = with pkgs; [
-    neovim
+    unstable.neovim
     htop
-    unstable.spotify
+    spotify
     google-chrome
     unstable.devbox
   ];
