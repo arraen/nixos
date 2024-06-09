@@ -11,11 +11,19 @@ in
 
   # User packages
   home.packages = with pkgs; [
-    unstable.neovim
-    htop
-    spotify
-    google-chrome
+    # Dev
     unstable.devbox
+    unstable.neovim
+    # Utility
+    ranger
+    htop
+    # Music
+    spotify
+    # Internet tools
+    discord
+    google-chrome
+    slack
+    telegram-desktop
   ];
 
   # Git
