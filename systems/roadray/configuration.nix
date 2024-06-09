@@ -133,6 +133,7 @@
     (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
 
+  services.pcscd.enable = true;
 
   # Use Flatpak, just in case
   services.flatpak.enable = true;
