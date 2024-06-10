@@ -14,6 +14,7 @@ in
     # Dev
     unstable.devbox
     unstable.neovim
+    meld
     # Utility
     ranger
     htop
