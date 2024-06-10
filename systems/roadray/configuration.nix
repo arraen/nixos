@@ -67,6 +67,9 @@
     xkb.variant = "";
   };
 
+  # LD Service
+  programs.nix-ld.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -110,10 +113,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    patchelf
     unzip
     vim
     wget
     zsh
+    nix-ld
+    nix-index
   ];
 
   # Fonts
