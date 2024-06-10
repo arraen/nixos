@@ -31,6 +31,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking.hostName = "roadray";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -82,7 +83,13 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio = {
+    enable = false;
+    package = pkgs.pulseaudioFull;
+    extraConfig = "
+      load-module module-switch-on-connect
+    ";
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
