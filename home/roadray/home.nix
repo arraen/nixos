@@ -25,6 +25,10 @@ in
     google-chrome
     slack
     telegram-desktop
+    # Note and task tools
+    unstable.obsidian
+    # Games
+    steam
   ];
 
   # Git
@@ -32,12 +36,21 @@ in
     enable = true;
     userName = "Roman Shaposhnikov";
     userEmail = "arraen@arraen.org.ua";
+    aliases = {
+      ci = "commit";
+      co = "checkout";
+      s = "status";
+    };
+    extraConfig = {
+      push = { autoSetupRemote = true; };
+    };
   };
 
   # VScode configuration
   programs.vscode = {
     enable = true;
   };
+
   # State version
   home.stateVersion = "24.05";
 }
