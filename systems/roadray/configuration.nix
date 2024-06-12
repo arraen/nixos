@@ -47,6 +47,8 @@
   # Use Flatpak, just in case
   services.flatpak.enable = true;
 
+  programs.steam.enable = true;
+
   # Define arraen user.
   users.users.arraen = {
     isNormalUser = true;
