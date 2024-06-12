@@ -15,6 +15,9 @@ in
     unstable.devbox
     unstable.neovim
     meld
+    # Kubernetes
+    k9s
+    kubectl
     # Utility
     ranger
     htop
@@ -27,8 +30,6 @@ in
     telegram-desktop
     # Note and task tools
     unstable.obsidian
-    # Games
-    steam
   ];
 
   # Git
