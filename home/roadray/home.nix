@@ -28,6 +28,7 @@ in
     google-chrome
     slack
     telegram-desktop
+    transmission_4-qt
     # Note and task tools
     unstable.obsidian
   ];
