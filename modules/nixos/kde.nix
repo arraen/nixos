@@ -1,4 +1,11 @@
 {
+  config,
+  pkgs,
+  lib,
+  inputs',
+  ...
+}:
+{
   programs.plasma = {
     enable = true;
     shortcuts = {
