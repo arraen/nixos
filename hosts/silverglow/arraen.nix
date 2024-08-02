@@ -33,7 +33,11 @@
     };
   };
 
-  imports = [ ../modules/home-manager/fish.nix ];
+  imports = [ 
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+    ../../modules/home-manager/fish.nix 
+    ../../modules/home-manager/kde.nix
+  ];
 
   home.packages = with pkgs; [
     # Shell

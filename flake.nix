@@ -36,6 +36,7 @@
     self,
     nixpkgs,
     home-manager,
+    plasma-manager,
     ...
   } @ inputs: let
     inherit (self) outputs;

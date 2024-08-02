@@ -3,5 +3,5 @@
 {
   # List your module files here
   fonts = import ./fonts.nix;
-  kde = import ./kde.nix
+  kde = import ./kde.nix;
 }
