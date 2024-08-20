@@ -71,9 +71,11 @@
     # Internet tools
     discord
     google-chrome
+    floorp
     slack
     telegram-desktop
     transmission_4-qt
+    megasync
     # Note and task tools
     unstable.obsidian
   ];
