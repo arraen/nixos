@@ -45,6 +45,7 @@
   }; 
 
   environment.systemPackages = with pkgs; [
+    nix-info
     git
     vim
     wget
@@ -52,7 +53,7 @@
 
   programs.firefox.enable = true;
 
-  #services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   users.users.arraen = {
     isNormalUser = true;
