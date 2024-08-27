@@ -76,6 +76,7 @@
     telegram-desktop
     transmission_4-qt
     megasync
+    protonvpn-gui
     # Note and task tools
     unstable.obsidian
   ];
