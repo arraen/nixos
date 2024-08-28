@@ -131,7 +131,8 @@
 
     devShells.x86_64-linux = {
         python37 = devenv.lib.mkShell {
-          inherit inputs nixpkgs nixpkgs-python;
+          inherit inputs;
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             ({ pkgs, config, ... }: {
               languages.python.enable = true;
