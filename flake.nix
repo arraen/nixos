@@ -29,7 +29,12 @@
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -92,6 +97,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
+          inputs.nix-index-database.hmModules.nix-index
           ./hosts/sagrada/arraen.nix
         ];
       };
@@ -99,6 +105,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
+          inputs.nix-index-database.hmModules.nix-index
           ./hosts/silverglow/arraen.nix
         ];
       };

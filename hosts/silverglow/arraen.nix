@@ -60,7 +60,6 @@
     #    yubikey-manager
     #    libfido2
     # Utility
-    nix-index
     bat
     du-dust
     ranger
