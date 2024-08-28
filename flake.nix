@@ -43,11 +43,6 @@
     };
   };
 
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-trusted-substituters = "https://devenv.cachix.org";
-  };
-
   outputs = {
     self,
     nixpkgs,
@@ -136,10 +131,10 @@
           modules = [
             ({ pkgs, config, ... }: {
               languages.python.enable = true;
-              languages.python.version = "3.7.6";
+              languages.python.version = "3.7";
 
               enterShell = ''
-                echo Python 3.7.6
+                echo Python 3.7
               '';
             })
           ];
