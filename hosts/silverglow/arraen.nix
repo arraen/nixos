@@ -53,6 +53,7 @@
     meld
     gh
     difftastic
+    python3
     # Kubernetes
     k9s
     kubectl
@@ -97,6 +98,8 @@
   programs.vscode = {
     enable = true;
   };
+
+  programs.nix-index.enable = true;
 
   home = {
     username = "arraen";
