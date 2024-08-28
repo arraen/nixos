@@ -53,6 +53,7 @@
     meld
     gh
     difftastic
+    # Python
     python3
     # Kubernetes
     k9s
