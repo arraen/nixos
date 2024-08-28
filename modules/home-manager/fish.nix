@@ -62,7 +62,6 @@
       # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-      { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
       { name = "pure"; src = pkgs.fishPlugins.pure.src; }
       { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
       { name = "done"; src = pkgs.fishPlugins.done.src; }
