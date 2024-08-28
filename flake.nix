@@ -35,6 +35,17 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    devenv.url = "github:cachix/devenv";
+
+    nixpkgs-python = {
+      url = "github:cachix/nixpkgs-python";
+    };
+  };
+
+  nixConfig = {
+    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+    extra-substituters = "https://devenv.cachix.org";
   };
 
   outputs = {
@@ -42,6 +53,9 @@
     nixpkgs,
     home-manager,
     plasma-manager,
+    nix-index-database,
+    devenv,
+    nixpkgs-python,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -97,7 +111,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          inputs.nix-index-database.hmModules.nix-index
+          nix-index-database.hmModules.nix-index
           ./hosts/sagrada/arraen.nix
         ];
       };
@@ -105,9 +119,29 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          inputs.nix-index-database.hmModules.nix-index
+          nix-index-database.hmModules.nix-index
           ./hosts/silverglow/arraen.nix
         ];
+      };
+    };
+
+    packages.x86_64-linux = {
+      python37-devenv-up = self.devShells.x86_64-linux.python37.config.procfileScript;
+    };
+
+    devShells.x86_64-linux = {
+        python37 = devenv.lib.mkShell {
+          inherit inputs nixpkgs nixpkgs-python;
+          modules = [
+            ({ pkgs, config, ... }: {
+              languages.python.enable = true;
+              languages.python.version = "3.7.6";
+
+              enterShell = ''
+                echo Python 3.7.6
+              '';
+            })
+          ];
       };
     };
   };

@@ -46,7 +46,6 @@
 
   environment.systemPackages = with pkgs; [
     nix-info
-    devenv
     stdenv
     git
     vim
