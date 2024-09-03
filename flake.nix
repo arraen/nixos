@@ -118,6 +118,14 @@
           ./hosts/silverglow/arraen.nix
         ];
       };
+      "rshaposhnikov@se0210" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          nix-index-database.hmModules.nix-index
+          ./hosts/se0210/rshaposhnikov.nix
+        ];
+      };
     };
 
     packages.x86_64-linux = {
